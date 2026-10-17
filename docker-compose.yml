@@ -1,0 +1,41 @@
+services:
+  carwash-db:
+    image: mariadb:10.6
+    container_name: carwash-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: carwash_db
+      MYSQL_USER: carwash
+      MYSQL_PASSWORD: carwash123
+      TZ: Asia/Jakarta
+    volumes:
+      - carwash-db-data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    networks:
+      - carwash-net
+
+  carwash-app:
+    build: .
+    container_name: carwash-app
+    restart: unless-stopped
+    ports:
+      - "8085:80"
+    environment:
+      TZ: Asia/Jakarta
+    volumes:
+      - ./:/var/www/html
+      - ./php/99-session-security.ini:/usr/local/etc/php/conf.d/99-session-security.ini:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    depends_on:
+      - carwash-db
+    networks:
+      - carwash-net
+
+volumes:
+  carwash-db-data:
+
+networks:
+  carwash-net:

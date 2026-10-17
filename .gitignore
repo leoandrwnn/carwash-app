@@ -1,0 +1,26 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# PHP / local config
+php/*.ini
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Database dumps / backups
+*.sql
+*.bak
+
+# Sensitive local files
+security-check.php

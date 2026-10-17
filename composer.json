@@ -1,0 +1,9 @@
+{
+    "name": "autowash/carwash-app",
+    "description": "Sistem Manajemen Steam Mobil & Motor",
+    "require": {
+        "php": ">=7.4",
+        "tecnickcom/tcpdf": "^6.6",
+        "phpmailer/phpmailer": "^7.1"
+    }
+}

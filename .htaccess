@@ -1,0 +1,11 @@
+# Cegah akses langsung ke folder config & includes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>
+
+<FilesMatch "\.(sql|md)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+Options -Indexes
